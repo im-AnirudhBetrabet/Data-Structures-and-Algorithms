@@ -1,4 +1,4 @@
-from LinkedLists.Node import Node
+from Node import Node
 from typing import Optional
 
 class LinkedList:
@@ -6,6 +6,10 @@ class LinkedList:
         self.head   = None
         self.tail   = None
         self.length = 0
+
+    # Over-riding len function to retrieve the length of the linked list
+    def __len__(self):
+        return self.length
 
     """
     The append method is used to add a new node with the specified value to the end of the linked list.
@@ -53,3 +57,17 @@ class LinkedList:
 
         return current_node
 
+    """
+    The prepend method is used to add a new node to the beginning of the linked list.
+    Time Complexity: O(1) - Even in the worst case scenario, the prepend operation can be completed in constant time we always have access to the head.
+    """
+    def prepend(self, value) -> int:
+        new_node : Node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head     = new_node
+        self.length += 1
+        return self.length
