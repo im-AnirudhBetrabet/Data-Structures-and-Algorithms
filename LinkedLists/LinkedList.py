@@ -71,3 +71,22 @@ class LinkedList:
             self.head     = new_node
         self.length += 1
         return self.length
+
+    """
+    The pop_first or shift operation is used to remove the first node from the linked list.
+    Time Complexity: O(1) - Even in the worst case scenario, the pop_first operation can be completed in constant time as we always have access to the head.
+    """
+    def pop_first(self) -> Optional[Node]:
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            popped_node = self.head
+            self.head   = None
+            self.tail   = None
+            self.length-= 1
+            return popped_node
+        temp_node : Node = self.head
+        self.head = temp_node.next
+        temp_node.next = None
+        self.length -= 1
+        return temp_node
