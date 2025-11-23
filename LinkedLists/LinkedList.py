@@ -90,3 +90,15 @@ class LinkedList:
         temp_node.next = None
         self.length -= 1
         return temp_node
+
+    """
+    The get method is used to retrieve the node at the specified index.
+    Time Complexity: O(n) - In the worst case, we may need to traverse the entire list to reach the desired index.
+    """
+    def get(self, index: int) -> Optional[Node]:
+        if index < 0 or index >= self.length:
+            return None
+        current_node : Node = self.head
+        for _ in range(index):
+            current_node = current_node.next
+        return current_node
