@@ -12,6 +12,17 @@ class LinkedList:
         return self.length
 
     """
+    The to_list method is used to convert the linked list into a standard Python list.
+    """
+    def to_list(self):
+        array_repr : list = list()
+        current_node : Node = self.head
+        while current_node:
+            array_repr.append(current_node.value)
+            current_node = current_node.next
+        return array_repr
+
+    """
     The append method is used to add a new node with the specified value to the end of the linked list.
     Time Complexity: O(n) - In the worst case, we may need to traverse the entire list to find the last node,
     where n is the number of nodes in the list.
@@ -102,3 +113,14 @@ class LinkedList:
         for _ in range(index):
             current_node = current_node.next
         return current_node
+
+    """
+    The set method is used to set the value of the node at the specified index with the desired value.
+    Time Complexity: O(n) - In the worst case, we may need to traverse the entire list to reach the desired index
+    """
+    def set(self, index: int, value) -> Optional[bool]:
+        desired_node = self.get(index)
+        if desired_node is None:
+            return False
+        desired_node.value = value
+        return True
